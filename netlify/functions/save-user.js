@@ -6,7 +6,9 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const { email, password } = JSON.parse(event.body);
+const querystring = require('querystring');
+const { email, password } = querystring.parse(event.body);
+
 
   try {
     await sql`INSERT INTO users (email, password) VALUES (${email}, ${password})`;
