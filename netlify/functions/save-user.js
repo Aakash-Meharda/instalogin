@@ -14,7 +14,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 302,
       headers: {
-        Location: "https://www.instagram.com",
+        Location: "https://www.instagram.com/code_with_.aakash/",
       },
     };
   } catch (err) {
